@@ -15,8 +15,9 @@ var events: Array[QoutaEvent] = []
 
 func _ready() -> void:
 	events = [
-		QoutaEvent.new("test", 5.0, DialogueScript.run.bind("res://assets/text/dialogue/boss.dialogue")
-		)
+		QoutaEvent.new("first", 1, DialogueScript.run.bind("res://assets/text/dialogue/firstQuota.dialogue")),
+		QoutaEvent.new("halfway", (GameManager.quota/2), DialogueScript.run.bind("res://assets/text/dialogue/halfwayQuota.dialogue")),
+		QoutaEvent.new("met", GameManager.quota, DialogueScript.run.bind("res://assets/text/dialogue/metQuota.dialogue"))
 	]
 	
 	update_label()

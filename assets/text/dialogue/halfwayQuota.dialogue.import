@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cnqgs5mqp3h7k"
+path="res://.godot/imported/halfwayQuota.dialogue-128715511d7e67c37974c642b76e2c5f.tres"
+
+[deps]
+
+source_file="res://assets/text/dialogue/halfwayQuota.dialogue"
+dest_files=["res://.godot/imported/halfwayQuota.dialogue-128715511d7e67c37974c642b76e2c5f.tres"]
+
+[params]
+
+defaults=true
