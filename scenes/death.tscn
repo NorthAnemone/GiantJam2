@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bliy54vbnew7w"]
+
+[ext_resource type="PackedScene" uid="uid://h1ib4csmqlko" path="res://scenes/pause.tscn" id="1_pause"]
+[ext_resource type="Script" uid="uid://wk32b6j63dj0" path="res://scripts/player/death.gd" id="2_tjai8"]
+[ext_resource type="Texture2D" uid="uid://8qr3budmllsu" path="res://assets/sprites/Skull.png" id="3_tjai8"]
+
+[node name="Death" unique_id=163486512 instance=ExtResource("1_pause")]
+script = ExtResource("2_tjai8")
+
+[node name="Skull" type="Sprite2D" parent="UI" parent_id_path=PackedInt32Array(467611240) index="1" unique_id=940483291]
+position = Vector2(575, 317)
+scale = Vector2(0.1891892, 0.18918923)
+texture = ExtResource("3_tjai8")
+
+[node name="PauseText" parent="UI" parent_id_path=PackedInt32Array(467611240) index="2" unique_id=318241268]
+text = "TERMINATED"
+
+[node name="ContinueButton" parent="UI" parent_id_path=PackedInt32Array(467611240) index="3" unique_id=2114616718]
+visible = false

@@ -18,10 +18,6 @@ boot_splash/image="uid://brveli4d50xsg"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1200
 
-[audio]
-
-buses/default_bus_layout="res://assets/default_bus_layout.tres"
-
 [autoload]
 
 DialogueManager="*uid://c3rodes2l3gxb"

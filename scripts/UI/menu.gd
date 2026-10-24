@@ -9,8 +9,6 @@ extends Node2D
 @onready var creditsPanel: ColorRect = $UILayer/UI/CreditsPanel
 @onready var creditsText: Label = $UILayer/UI/CreditsPanel/CreditsClip/CreditsText
 @onready var titleLogo: Sprite2D = $TitleLogo
-@onready var backdrop: Sprite2D = $Backdrop
-@onready var backdrop2: Sprite2D = $Backdrop2
 @onready var buttons_root: Control = $UILayer/UI/Buttons
 @onready var ui_layer: CanvasLayer = $UILayer
 @onready var options: Node = $Options
@@ -29,9 +27,7 @@ extends Node2D
 @export var creditsScrollSpeed: float = 0.11
 var creditsActive: bool = false
 var _credits_height: float = 0.0
-@export var menuBgScrollSpeed: float = 20.0
 var _leaving: bool = false
-var _bg_y: float = 0.0
 
 static var padding: float = 10.0
 
@@ -44,7 +40,6 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(_on_credits_resized)
 	if creditsPanel != null:
 		creditsPanel.resized.connect(_on_credits_resized)
-	_place_backdrop()
 
 
 func _apply_text() -> void:
@@ -121,12 +116,6 @@ func _set_label(node: Node, value: String) -> void:
 
 
 func _process(elapsed: float) -> void:
-	if backdrop.texture:
-		var tile_h: float = backdrop.texture.get_height() * backdrop.scale.y
-		if tile_h > 0.0:
-			_bg_y = fmod(_bg_y + menuBgScrollSpeed * elapsed, tile_h)
-			_place_backdrop()
-
 	if creditsActive:
 		var next_top := creditsText.offset_top - creditsScrollSpeed * creditsPanel.size.y * elapsed
 		if next_top + _credits_height < 0.0:
@@ -149,13 +138,6 @@ func _process(elapsed: float) -> void:
 			_leaving = false
 			GameManager.begin_play()
 			get_tree().change_scene_to_packed(play_scene)
-
-
-func _place_backdrop() -> void:
-	if backdrop.texture == null:
-		return
-	backdrop.position.y = _bg_y
-	backdrop2.position.y = _bg_y - backdrop.texture.get_height() * backdrop.scale.y
 
 
 func closeGame() -> void:

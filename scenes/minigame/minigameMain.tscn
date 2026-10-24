@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c7dfyeoekdry3"]
 
 [ext_resource type="Script" uid="uid://b6a4p2aha4jww" path="res://scripts/minigame/MinigamePlayer.gd" id="1_006nn"]
-[ext_resource type="Texture2D" uid="uid://d4bv5akoctki4" path="res://assets/minigame/GAudit_YellowDot.png" id="1_26mrl"]
 [ext_resource type="Script" uid="uid://dleh82ij8swqs" path="res://scripts/minigame/minigameMain.gd" id="1_v0jcj"]
+[ext_resource type="Texture2D" uid="uid://0py4f7a1kb3p" path="res://assets/minigame/GAudit_YellowDot.PNG" id="3_cbf36"]
+[ext_resource type="PackedScene" path="res://scenes/screen_background.tscn" id="4_bg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pqtq1"]
 radius = 5.0
@@ -10,12 +11,14 @@ radius = 5.0
 [node name="minigameMain" type="Node2D" unique_id=1278801107]
 script = ExtResource("1_v0jcj")
 
+[node name="MinigameBackground" parent="." unique_id=1305207151 instance=ExtResource("4_bg")]
+
 [node name="Player" type="Area2D" parent="." unique_id=126965628]
 script = ExtResource("1_006nn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1265107294]
 scale = Vector2(0.08695652, 0.08695652)
-texture = ExtResource("1_26mrl")
+texture = ExtResource("3_cbf36")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1172784682]
 shape = SubResource("CircleShape2D_pqtq1")
