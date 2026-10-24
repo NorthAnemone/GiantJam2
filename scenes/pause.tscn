@@ -30,7 +30,7 @@ offset_bottom = 140.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-text = ""
+text = "PAUSED"
 horizontal_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="UI"]
@@ -39,7 +39,7 @@ offset_left = 260.0
 offset_top = 244.0
 offset_right = 380.0
 offset_bottom = 266.0
-text = ""
+text = "Continue"
 
 [node name="RestartButton" type="Button" parent="UI"]
 layout_mode = 0
@@ -47,7 +47,7 @@ offset_left = 260.0
 offset_top = 276.0
 offset_right = 380.0
 offset_bottom = 298.0
-text = ""
+text = "Restart"
 
 [node name="ExitButton" type="Button" parent="UI"]
 layout_mode = 0
@@ -55,7 +55,7 @@ offset_left = 260.0
 offset_top = 308.0
 offset_right = 380.0
 offset_bottom = 330.0
-text = ""
+text = "Exit"
 
 [connection signal="pressed" from="UI/ContinueButton" to="." method="onContinue"]
 [connection signal="pressed" from="UI/RestartButton" to="." method="onRestart"]

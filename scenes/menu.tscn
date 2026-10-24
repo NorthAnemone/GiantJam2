@@ -31,6 +31,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Buttons" type="Control" parent="UILayer/UI" unique_id=1900000100]
+anchors_preset = 0
 mouse_filter = 2
 
 [node name="PlayButton" type="Button" parent="UILayer/UI/Buttons" unique_id=1953328181]
@@ -77,26 +78,25 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="CreditsClip" type="Control" parent="UILayer/UI" unique_id=338766730]
+[node name="CreditsClip" type="Control" parent="UILayer/UI/CreditsPanel" unique_id=338766730]
 clip_contents = true
 layout_mode = 1
-anchor_left = 0.6
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CreditsText" type="Label" parent="UILayer/UI/CreditsClip" unique_id=604325472]
+[node name="CreditsText" type="Label" parent="UILayer/UI/CreditsPanel/CreditsClip" unique_id=604325472]
 visible = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 246.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 3210.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
-text = ""
 autowrap_mode = 3
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1157577543]

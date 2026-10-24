@@ -9,7 +9,7 @@ extends Node2D
 @onready var creditsButton: Button = $UILayer/UI/Buttons/CreditsButton
 @onready var closeButton: Button = $UILayer/UI/Buttons/CloseButton
 @onready var creditsPanel: ColorRect = $UILayer/UI/CreditsPanel
-@onready var creditsText: Label = $UILayer/UI/CreditsClip/CreditsText
+@onready var creditsText: Label = $UILayer/UI/CreditsPanel/CreditsClip/CreditsText
 @onready var titleLogo: Sprite2D = $TitleLogo
 @onready var backdrop: Sprite2D = $Backdrop
 @onready var backdrop2: Sprite2D = $Backdrop2
@@ -17,8 +17,20 @@ extends Node2D
 @onready var ui_layer: CanvasLayer = $UILayer
 @onready var options: CanvasItem = $Options
 
-@export var creditsScrollSpeed: float = 30.0
+@export var credits_font_size: int = 22:
+	set(value):
+		credits_font_size = maxi(value, 1)
+		if is_node_ready():
+			_apply_credits_font()
+			_reflow_credits(true)
+@export var credits_margin: float = 10.0:
+	set(value):
+		credits_margin = maxf(value, 0.0)
+		if is_node_ready():
+			_reflow_credits(true)
+@export var creditsScrollSpeed: float = 70.0
 var creditsActive: bool = false
+var _credits_height: float = 0.0
 @export var menuBgScrollSpeed: float = 20.0
 var _leaving: bool = false
 var _bg_y: float = 0.0
@@ -35,6 +47,9 @@ func _ready() -> void:
 	_apply_text()
 	_fit_buttons()
 	get_viewport().size_changed.connect(_fit_buttons)
+	get_viewport().size_changed.connect(_on_credits_resized)
+	if creditsPanel != null:
+		creditsPanel.resized.connect(_on_credits_resized)
 	_place_backdrop()
 
 
@@ -60,6 +75,60 @@ func _apply_text() -> void:
 	elif body is String:
 		credits = body
 	_set_label(creditsText, credits)
+	if creditsText != null:
+		_apply_credits_font()
+		_reflow_credits(false)
+
+
+func _apply_credits_font() -> void:
+	if creditsText == null:
+		return
+	creditsText.add_theme_font_size_override("font_size", credits_font_size)
+	creditsText.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	creditsText.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+
+
+func _credits_inner_width() -> float:
+	if creditsPanel == null:
+		return 0.0
+	return maxf(creditsPanel.size.x - credits_margin * 2.0, 1.0)
+
+
+func _measure_credits_height(width: float) -> float:
+	if creditsText == null:
+		return 0.0
+	var font := creditsText.get_theme_font("font")
+	if font == null:
+		return creditsText.get_minimum_size().y
+	return font.get_multiline_string_size(creditsText.text, HORIZONTAL_ALIGNMENT_LEFT, width, credits_font_size).y
+
+
+func _on_credits_resized() -> void:
+	if creditsText == null or not creditsText.visible:
+		return
+	_reflow_credits(true)
+
+
+func _reflow_credits(keep_scroll: bool) -> void:
+	if creditsText == null or creditsPanel == null:
+		return
+	var width := _credits_inner_width()
+	var top := creditsPanel.size.y
+	if keep_scroll:
+		top = creditsText.offset_top
+	_credits_height = _measure_credits_height(width)
+	_place_credits(top)
+
+
+func _place_credits(top: float) -> void:
+	if creditsText == null:
+		return
+	creditsText.anchor_left = 0.0
+	creditsText.anchor_right = 1.0
+	creditsText.offset_left = credits_margin
+	creditsText.offset_right = -credits_margin
+	creditsText.offset_top = top
+	creditsText.offset_bottom = top + _credits_height
 
 
 func _set_label(node: Node, value: String) -> void:
@@ -75,9 +144,10 @@ func _process(elapsed: float) -> void:
 			_place_backdrop()
 
 	if creditsActive:
-		creditsText.position.y -= creditsScrollSpeed * elapsed
-		if creditsText.position.y + creditsText.size.y < 0:
-			creditsText.position.y = creditsPanel.size.y
+		var next_top := creditsText.offset_top - creditsScrollSpeed * elapsed
+		if next_top + _credits_height < 0.0:
+			next_top = creditsPanel.size.y
+		_place_credits(next_top)
 
 	if _leaving:
 		var dx: float = 450.0 * elapsed
@@ -153,7 +223,7 @@ func showCredits() -> void:
 	creditsText.visible = not creditsText.visible
 	creditsPanel.visible = creditsText.visible
 	if creditsText.visible:
-		creditsText.position.y = creditsPanel.size.y
+		_reflow_credits(false)
 		creditsActive = true
 	else:
 		creditsActive = false

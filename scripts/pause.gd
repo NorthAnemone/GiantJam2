@@ -12,16 +12,6 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(func() -> void:
 		Menu.fit_control($UI)
 	)
-	var text := UiText.section("pause")
-	_set_label($UI/PauseText, text.get("title", ""))
-	_set_label($UI/ContinueButton, text.get("continue", ""))
-	_set_label($UI/RestartButton, text.get("restart", ""))
-	_set_label($UI/ExitButton, text.get("exit", ""))
-
-
-func _set_label(node: Node, value: String) -> void:
-	if node != null:
-		node.set("text", value)
 
 
 func _exit_tree() -> void:

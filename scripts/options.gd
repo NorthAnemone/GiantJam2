@@ -10,13 +10,12 @@ const SAVE_PATH: String = "user://Pira2ite.cfg"
 var currentShipNumber: int = 0
 
 @export var ship_textures: Array[Texture2D] = []
+@export var ship_names: Array[String] = ["N/A"]
+@export var missing_ship: String = "WARNING!"
 @export var padding: int = 10
-
-var _text: Dictionary = {}
 
 
 func _ready() -> void:
-	_text = UiText.section("options")
 	var ui := $Panel as Control
 	if ui != null:
 		ui.size = Menu.DESIGN_SIZE
@@ -24,23 +23,21 @@ func _ready() -> void:
 		get_viewport().size_changed.connect(func() -> void:
 			Menu.fit_control(ui)
 		)
-	_set_label($Panel/MusicLabel, _text.get("music", ""))
-	_set_label($Panel/SfxLabel, _text.get("sfx", ""))
-	_set_label($Panel/BackButton, _text.get("back", ""))
 	if musicSlider != null:
 		setMusicVolume(musicSlider.value)
 	if sfxSlider != null:
 		setSfxVolume(sfxSlider.value)
+	var menu_music := get_parent().get_node_or_null("Music") as AudioStreamPlayer
+	if menu_music != null:
+		menu_music.bus = "Music"
 	updateShipButtonText()
-
-
-func _set_label(node: Node, value: String) -> void:
-	if node != null:
-		node.set("text", value)
 
 
 func setMusicVolume(v: float) -> void:
 	_set_bus_volume("Music", v)
+	var menu_music := get_parent().get_node_or_null("Music") as AudioStreamPlayer
+	if menu_music != null and menu_music.bus != "Music":
+		menu_music.bus = "Music"
 
 
 func setSfxVolume(v: float) -> void:
@@ -50,7 +47,10 @@ func setSfxVolume(v: float) -> void:
 func _set_bus_volume(bus_name: String, v: float) -> void:
 	var idx := AudioServer.get_bus_index(bus_name)
 	if idx < 0:
-		return
+		AudioServer.add_bus()
+		idx = AudioServer.bus_count - 1
+		AudioServer.set_bus_name(idx, bus_name)
+		AudioServer.set_bus_send(idx, "Master")
 	if v <= 0.0001:
 		AudioServer.set_bus_volume_db(idx, -80.0)
 	else:
@@ -66,10 +66,9 @@ func backToMenu() -> void:
 
 
 func cycleShipChoice() -> void:
-	var ships: Array = _text.get("ships", [])
 	var count := ship_textures.size()
 	if count <= 0:
-		count = ships.size()
+		count = ship_names.size()
 	if count <= 0:
 		return
 	currentShipNumber += 1
@@ -96,17 +95,16 @@ func _ship_choice() -> Variant:
 
 
 func updateShipButtonText() -> void:
-	var ships: Array = _text.get("ships", [])
 	var count := ship_textures.size()
 	if count <= 0:
-		count = ships.size()
+		count = ship_names.size()
 	var choice = _ship_choice()
 	if choice != null:
 		currentShipNumber = int(choice)
 	if count > 0 and (currentShipNumber < 0 or currentShipNumber >= count):
 		currentShipNumber = 0
-	var ship_name := str(_text.get("missing_ship", ""))
-	if currentShipNumber >= 0 and currentShipNumber < ships.size():
-		ship_name = str(ships[currentShipNumber])
+	var ship_name := missing_ship
+	if currentShipNumber >= 0 and currentShipNumber < ship_names.size():
+		ship_name = ship_names[currentShipNumber]
 	if shipButton != null:
 		shipButton.text = ship_name

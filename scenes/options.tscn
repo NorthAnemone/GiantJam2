@@ -24,7 +24,7 @@ offset_left = 25.0
 offset_top = 212.0
 offset_right = 135.0
 offset_bottom = 234.0
-text = ""
+text = "N/A"
 
 [node name="MusicLabel" type="Label" parent="Panel" unique_id=1341274520]
 layout_mode = 0
@@ -34,7 +34,7 @@ offset_right = 135.0
 offset_bottom = 254.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
-text = ""
+text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="Panel" unique_id=1880434407]
 layout_mode = 0
@@ -54,7 +54,7 @@ offset_right = 135.0
 offset_bottom = 284.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
-text = ""
+text = "SFX"
 
 [node name="SfxSlider" type="HSlider" parent="Panel" unique_id=1900000003]
 layout_mode = 0
@@ -72,7 +72,7 @@ offset_left = 25.0
 offset_top = 308.0
 offset_right = 135.0
 offset_bottom = 330.0
-text = ""
+text = "Back"
 
 [connection signal="value_changed" from="Panel/MusicSlider" to="." method="setMusicVolume"]
 [connection signal="value_changed" from="Panel/SfxSlider" to="." method="setSfxVolume"]
