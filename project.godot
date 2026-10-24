@@ -13,16 +13,20 @@ config_version=5
 config/name="Pira2ite"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
-boot_splash/stretch_mode=0
-boot_splash/image="uid://brveli4d50xsg"
+boot_splash/stretch_mode=4
+boot_splash/image="res://assets/icons/groupone/GroupOneSplash.png"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1200
 
 [autoload]
 
-Flx="*res://scripts/flx.gd"
 DialogueManager="*uid://c3rodes2l3gxb"
 GameManager="*uid://bpslyisjiqn2q"
+Flx="*res://scripts/flx.gd"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://scenes/Balloon/balloon.tscn"
 
 [display]
 
