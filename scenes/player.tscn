@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b5laet0eedgdn" path="res://scripts/player/playerBase.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://drg1jbypexjhr" path="res://scripts/player/playerMove.gd" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://dw1ltxinvt064" path="res://scenes/line_2d.gd" id="4_fjrip"]
 [ext_resource type="Script" uid="uid://cwi5w6snbw68q" path="res://scripts/player/playerLure.gd" id="4_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://b36d0b42s6jvv" path="res://assets/icons/icon.svg" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://b36d0b42s6jvv" path="res://icon.svg" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://boay0161n1j5b" path="res://scenes/character_body_2d.gd" id="5_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngi1j"]
 
@@ -27,19 +29,35 @@ shape = SubResource("RectangleShape2D_ngi1j")
 scale = Vector2(0.078125, 0.078125)
 texture = ExtResource("4_tuyoq")
 
-[node name="LureBody" type="CharacterBody2D" parent="." unique_id=1262130314]
+[node name="LureBody" type="CharacterBody2D" parent="PlayerBody" unique_id=1262130314 groups=["lure"]]
+position = Vector2(0, -7)
 collision_layer = 8
+collision_mask = 3
 script = ExtResource("4_qlg0r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LureBody" unique_id=280148801]
-position = Vector2(0, -9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/LureBody" unique_id=280148801 groups=["lure"]]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_qlg0r")
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="LureBody" unique_id=697763306]
-position = Vector2(0, -9)
+[node name="AnimatedSprite2D" type="Sprite2D" parent="PlayerBody/LureBody" unique_id=697763306]
 scale = Vector2(0.03125, 0.031250015)
 texture = ExtResource("4_tuyoq")
+
+[node name="Line2D" type="Line2D" parent="PlayerBody/LureBody" unique_id=1315380081]
+visibility_layer = 2
+z_index = -1
+position = Vector2(0, 9)
+scale = Vector2(0.5, 0.5)
+points = PackedVector2Array(0, -18, 0, -18)
+width = 2.0
+default_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+script = ExtResource("4_fjrip")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerBody/LureBody" unique_id=2014399240 node_paths=PackedStringArray("leader", "line")]
+script = ExtResource("5_tuyoq")
+leader = NodePath("../..")
+line = NodePath("../Line2D")
+max_distance = 500.0
 
 [node name="MovementSystem" type="Node2D" parent="." unique_id=957180888]
 script = ExtResource("2_hqtel")

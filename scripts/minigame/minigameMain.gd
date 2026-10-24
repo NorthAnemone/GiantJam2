@@ -42,3 +42,11 @@ func _on_health_changed(health: int) -> void:
 		_dead = true
 		add_child(DEATH_SCENE.instantiate())
 		get_tree().paused = true
+
+func _on_minigame_end() -> void:
+	# 1. Unpause the game tree so the main scene resumes running
+	get_tree().paused = false
+	
+	# 2. Delete this temporary sub-scene
+	queue_free()
+	GameManager.isMinigame = false
