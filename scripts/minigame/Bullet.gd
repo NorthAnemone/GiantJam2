@@ -5,7 +5,9 @@ var direction = Vector2.DOWN
 var lifetime = 0.0
 
 func _process(delta: float) -> void:
-	position += direction * speed * delta
+	if GameManager.run_ended:
+		return
+	position += direction * speed * GameManager.get_hook_speed_multiplier() * delta
 	# The hook art points down, so offset its angle to aim the point along travel.
 	rotation = direction.angle() - Vector2.DOWN.angle()
 	lifetime += delta

@@ -7,10 +7,13 @@ var edge = 0
 var target: Node2D
 
 func _process(delta: float) -> void:
-	timer += delta
+	if GameManager.run_ended:
+		return
+	# Scale firing progress continuously instead of resetting the firing clock.
+	timer += delta * GameManager.get_difficulty_multiplier()
 	if timer < fire_rate:
 		return
-	timer = 0.0
+	timer = fmod(timer, fire_rate)
 	if not is_instance_valid(target):
 		return
 	# Spawn just outside a random point on this edge and aim inward.
