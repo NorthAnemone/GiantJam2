@@ -2,5 +2,11 @@
 
 [ext_resource type="Script" uid="uid://br6pnijkp6g83" path="res://scripts/TimerBox.gd" id="1_y33t7"]
 
-[node name="TimerBox" type="Node2D" unique_id=386012852]
+[node name="TimerBox" type="Node2D" unique_id=386012852 node_paths=PackedStringArray("label")]
 script = ExtResource("1_y33t7")
+label = NodePath("TimerLabel")
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1055981744]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0.00/0.00"

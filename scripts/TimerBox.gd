@@ -12,11 +12,15 @@ var  nextEvent: int = 0
 
 var events: Array[TimerEvent] = []
 
+@export var label: Label
+
 func _ready() -> void:
 	events = [
 		TimerEvent.new("test", 5.0, DialogueScript.run.bind("res://assets/text/dialogue/boss.dialogue")
 		)
 	]
+	
+	label.text = "%.2f/%.2f" % [GameManager.dayTimer, GameManager.dayLength]
 	
 	start()
 
@@ -26,6 +30,7 @@ func _process(delta: float) -> void:
 		return
 
 	GameManager.dayTimer += delta
+	label.text = "%.2f/%.2f" % [GameManager.dayTimer, GameManager.dayLength]
 	check_events()
 
 	if GameManager.dayTimer >= GameManager.dayLength:
