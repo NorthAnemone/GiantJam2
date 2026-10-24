@@ -66,3 +66,10 @@ func end_play() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+## dayTimer stores elapsed time, so adding time removes it from the remaining day.
+func lose_time(seconds: float) -> void:
+	dayTimer = minf(dayTimer + maxf(seconds, 0.0), dayLength)
+	if is_instance_valid(timer):
+		timer.update_label()
