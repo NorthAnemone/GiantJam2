@@ -2,8 +2,10 @@ extends Node2D
 
 var turret_scene = preload("res://scenes/minigame/turret.tscn")
 const PAUSE_SCENE := preload("res://scenes/pause.tscn")
+const DEATH_SCENE := preload("res://scenes/death.tscn")
 
 var _pause: Node = null
+var _dead: bool = false
 
 func _ready() -> void:
 	$Player.position = get_viewport_rect().get_center()
@@ -22,7 +24,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("pause") or event.is_echo():
 		return
-	if _pause != null and is_instance_valid(_pause):
+	if _dead or (_pause != null and is_instance_valid(_pause)):
 		return
 	_pause = PAUSE_SCENE.instantiate()
 	add_child(_pause)
@@ -35,6 +37,11 @@ func _on_health_changed(health: int) -> void:
 	$HUD/HealthLabel.text = "HP %d / %d" % [health, $Player.max_health]
 	if health == 0:
 		$HUD/HealthLabel.text = "HP 0 / %d - Game over" % $Player.max_health
+		if _dead:
+			return
+		_dead = true
+		add_child(DEATH_SCENE.instantiate())
+		get_tree().paused = true
 
 func _on_minigame_end() -> void:
 	# 1. Unpause the game tree so the main scene resumes running

@@ -1,8 +1,8 @@
 extends Node
 
-const dayLength: float = 60
+const dayLength: float = 120
 
-var quota: float = 0
+var quota: float = 6
 var score: float = 0
 var dosh: float = 0
 var dayCount: int = 0
@@ -23,9 +23,45 @@ var LureMoveState = MOVE_STATE.LURE
 var moveState = playerMoveState
 var playerVelocity: Vector2
 
+const TIMER_SCENE := preload("res://scenes/time_box.tscn")
+const QUOTA_SCENE := preload("res://scenes/qouta.tscn")
+var timer: TimerBox
+var quota_display: Node
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+
+
+## Shows the day timer over whatever scene Play opened.
+func begin_play() -> void:
+	if timer == null:
+		timer = TIMER_SCENE.instantiate()
+		timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+		add_child(timer)
+	else:
+		timer.visible = true
+		timer.start()
+	if quota_display == null:
+		quota_display = QUOTA_SCENE.instantiate()
+		quota_display.process_mode = Node.PROCESS_MODE_PAUSABLE
+		add_child(quota_display)
+	else:
+		quota_display.visible = true
+		if quota_display.has_method("start"):
+			quota_display.start()
+
+
+## Hides the day timer when leaving back to the menu.
+func end_play() -> void:
+	if timer == null:
+		return
+	timer.stop()
+	timer.visible = false
+	if quota_display != null:
+		if quota_display.has_method("stop"):
+			quota_display.stop()
+		quota_display.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

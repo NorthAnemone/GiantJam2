@@ -1,4 +1,3 @@
-class_name Pause
 extends CanvasLayer
 
 static var isPaused: bool = false
@@ -37,4 +36,5 @@ func onRestart() -> void:
 func onExit() -> void:
 	isPaused = false
 	get_tree().paused = false
+	GameManager.end_play()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

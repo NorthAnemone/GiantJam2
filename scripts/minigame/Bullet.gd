@@ -6,6 +6,8 @@ var lifetime = 0.0
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta
+	# The hook art points down, so offset its angle to aim the point along travel.
+	rotation = direction.angle() - Vector2.DOWN.angle()
 	lifetime += delta
 	# Keep new bullets alive outside the edge until they enter the screen.
 	# Read the current viewport so resizing does not use stale bounds.

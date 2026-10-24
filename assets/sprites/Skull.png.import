@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqtc230ddhlxh"
-path="res://.godot/imported/Hook.png-0d3e9e9e7ecf96666526f1a9165af79c.ctex"
+uid="uid://8qr3budmllsu"
+path="res://.godot/imported/Skull.png-1c36cbb53ce815d4d7c9c61d33456e4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Hook.png"
-dest_files=["res://.godot/imported/Hook.png-0d3e9e9e7ecf96666526f1a9165af79c.ctex"]
+source_file="res://assets/sprites/Skull.png"
+dest_files=["res://.godot/imported/Skull.png-1c36cbb53ce815d4d7c9c61d33456e4b.ctex"]
 
 [params]
 

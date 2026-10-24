@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h1ib4csmqlko"]
 
-[ext_resource type="Script" uid="uid://0k8nd0k1156y" path="res://scripts/pause.gd" id="1_pause"]
+[ext_resource type="Script" uid="uid://0k8nd0k1156y" path="res://scripts/timer/pause.gd" id="1_pause"]
 
 [node name="Pause" type="CanvasLayer" unique_id=186047027]
 process_mode = 3

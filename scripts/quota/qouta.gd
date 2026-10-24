@@ -15,32 +15,24 @@ var events: Array[QoutaEvent] = []
 
 func _ready() -> void:
 	events = [
-		QoutaEvent.new("test", 5.0, DialogueScript.run.bind("res://assets/text/dialogue/boss.dialogue")
-		)
+		QoutaEvent.new("first", 1, DialogueScript.run.bind("res://assets/text/dialogue/firstQuota.dialogue")),
+		QoutaEvent.new("halfway", (GameManager.quota/2), DialogueScript.run.bind("res://assets/text/dialogue/halfwayQuota.dialogue")),
+		QoutaEvent.new("met", GameManager.quota, DialogueScript.run.bind("res://assets/text/dialogue/metQuota.dialogue"))
 	]
 	
 	update_label()
-	
-	start()
+	running = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not running:
 		return
-
-	GameManager.dayTimer += delta
 	update_label()
 	check_events()
 
-	if GameManager.dayTimer >= GameManager.dayLength:
-		running = false
-		finished.emit()
 
-
-## Starts the timer from 0.
+## Shows the quota without changing the day timer.
 func start() -> void:
-	GameManager.dayTimer = 0.0
-	nextEvent = 0
 	running = true
 
 
@@ -56,7 +48,7 @@ func reset() -> void:
 	running = false
 
 func update_label() -> void:
-	label.text = "%d/%d" % [GameManager.score, GameManager.quota]
+	label.text = "ENEMIES SUNK: %d/%d" % [GameManager.score, GameManager.quota]
 
 ## Checks whether the next event should happen.
 func check_events() -> void:

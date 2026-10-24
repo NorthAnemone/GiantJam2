@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4bv5akoctki4"
-path="res://.godot/imported/GAudit_YellowDot.png-e76f55a29921aa0acc71a57ef52bc286.ctex"
+uid="uid://0py4f7a1kb3p"
+path="res://.godot/imported/GAudit_YellowDot.PNG-6950c0d84fa75d1396b20ab9c74f4f65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/minigame/GAudit_YellowDot.png"
-dest_files=["res://.godot/imported/GAudit_YellowDot.png-e76f55a29921aa0acc71a57ef52bc286.ctex"]
+source_file="res://assets/minigame/GAudit_YellowDot.PNG"
+dest_files=["res://.godot/imported/GAudit_YellowDot.PNG-6950c0d84fa75d1396b20ab9c74f4f65.ctex"]
 
 [params]
 

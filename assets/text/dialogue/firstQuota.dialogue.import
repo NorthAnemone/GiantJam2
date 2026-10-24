@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://p1sy3kn0retj"
+path="res://.godot/imported/firstQuota.dialogue-d7c587bed7db03c0c17646b28e703755.tres"
+
+[deps]
+
+source_file="res://assets/text/dialogue/firstQuota.dialogue"
+dest_files=["res://.godot/imported/firstQuota.dialogue-d7c587bed7db03c0c17646b28e703755.tres"]
+
+[params]
+
+defaults=true
