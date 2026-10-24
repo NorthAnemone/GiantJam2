@@ -35,6 +35,10 @@ func _ready() -> void:
 
 ## Shows the day timer over whatever scene Play opened.
 func begin_play() -> void:
+	isMinigame = false
+	minigameTimer = 0.0
+	score = 0
+	dayKillCount = 0
 	if timer == null:
 		timer = TIMER_SCENE.instantiate()
 		timer.process_mode = Node.PROCESS_MODE_PAUSABLE
