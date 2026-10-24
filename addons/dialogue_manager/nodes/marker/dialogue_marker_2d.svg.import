@@ -2,16 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bywbfyngelk07"
-path="res://.godot/imported/GroupOneBrandface.png-72f74053a15b7137b8980040c624fc17.ctex"
+uid="uid://cim0y62o6g36i"
+path="res://.godot/imported/dialogue_marker_2d.svg-1eedb01d2a05819be5ce0e675c93eeab.ctex"
 metadata={
+"has_editor_variant": true,
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/groupone/GroupOneBrandface.png"
-dest_files=["res://.godot/imported/GroupOneBrandface.png-72f74053a15b7137b8980040c624fc17.ctex"]
+source_file="res://addons/dialogue_manager/nodes/marker/dialogue_marker_2d.svg"
+dest_files=["res://.godot/imported/dialogue_marker_2d.svg-1eedb01d2a05819be5ce0e675c93eeab.ctex"]
 
 [params]
 
@@ -38,3 +39,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=true
+editor/convert_colors_with_editor_theme=true
