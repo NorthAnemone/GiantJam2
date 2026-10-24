@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cf66r60m3f0sp"]
+
+[ext_resource type="Script" uid="uid://br6pnijkp6g83" path="res://scripts/TimerBox.gd" id="1_pmi0b"]
+
+[node name="TimeBox" type="Node2D" unique_id=386012852]
+script = ExtResource("1_pmi0b")
