@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dndqnharunlrj"
-path="res://.godot/imported/simple-white-circle-and-drop-shadow-png.webp-f97d9420e4761ba06a644e76e9d5f939.ctex"
+uid="uid://buoljh01gfrq3"
+path="res://.godot/imported/MinigameBackground.png-598bfe8c0327711f735ddd18e5354bb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/minigame/simple-white-circle-and-drop-shadow-png.webp"
-dest_files=["res://.godot/imported/simple-white-circle-and-drop-shadow-png.webp-f97d9420e4761ba06a644e76e9d5f939.ctex"]
+source_file="res://assets/art/MinigameBackground.png"
+dest_files=["res://.godot/imported/MinigameBackground.png-598bfe8c0327711f735ddd18e5354bb6.ctex"]
 
 [params]
 
