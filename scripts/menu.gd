@@ -15,7 +15,7 @@ extends Node2D
 @onready var backdrop2: Sprite2D = $Backdrop2
 @onready var buttons_root: Control = $UILayer/UI/Buttons
 @onready var ui_layer: CanvasLayer = $UILayer
-@onready var options: CanvasItem = $Options
+@onready var options: Node = $Options
 
 @export var credits_font_size: int = 22:
 	set(value):
@@ -23,19 +23,17 @@ extends Node2D
 		if is_node_ready():
 			_apply_credits_font()
 			_reflow_credits(true)
-@export var credits_margin: float = 10.0:
+@export var credits_margin: float = 0.04:
 	set(value):
 		credits_margin = maxf(value, 0.0)
 		if is_node_ready():
 			_reflow_credits(true)
-@export var creditsScrollSpeed: float = 70.0
+@export var creditsScrollSpeed: float = 0.11
 var creditsActive: bool = false
 var _credits_height: float = 0.0
 @export var menuBgScrollSpeed: float = 20.0
 var _leaving: bool = false
 var _bg_y: float = 0.0
-
-const DESIGN_SIZE := Vector2(640, 360)
 
 static var padding: float = 10.0
 
@@ -45,25 +43,10 @@ var _buttons: Array[Button] = []
 func _ready() -> void:
 	_buttons = [playButton, optionsButton, creditsButton, closeButton]
 	_apply_text()
-	_fit_buttons()
-	get_viewport().size_changed.connect(_fit_buttons)
 	get_viewport().size_changed.connect(_on_credits_resized)
 	if creditsPanel != null:
 		creditsPanel.resized.connect(_on_credits_resized)
 	_place_backdrop()
-
-
-static func fit_control(node: Control) -> void:
-	if node == null:
-		return
-	var view := node.get_viewport().get_visible_rect().size
-	if view.x <= 0.0 or view.y <= 0.0:
-		return
-	node.scale = view / DESIGN_SIZE
-
-
-func _fit_buttons() -> void:
-	fit_control(buttons_root)
 
 
 func _apply_text() -> void:
@@ -91,7 +74,7 @@ func _apply_credits_font() -> void:
 func _credits_inner_width() -> float:
 	if creditsPanel == null:
 		return 0.0
-	return maxf(creditsPanel.size.x - credits_margin * 2.0, 1.0)
+	return maxf(creditsPanel.size.x * (1.0 - credits_margin * 2.0), 1.0)
 
 
 func _measure_credits_height(width: float) -> float:
@@ -124,9 +107,12 @@ func _place_credits(top: float) -> void:
 	if creditsText == null:
 		return
 	creditsText.anchor_left = 0.0
+	creditsText.anchor_top = 0.0
 	creditsText.anchor_right = 1.0
-	creditsText.offset_left = credits_margin
-	creditsText.offset_right = -credits_margin
+	creditsText.anchor_bottom = 0.0
+	var margin := creditsPanel.size.x * credits_margin
+	creditsText.offset_left = margin
+	creditsText.offset_right = -margin
 	creditsText.offset_top = top
 	creditsText.offset_bottom = top + _credits_height
 
@@ -144,13 +130,13 @@ func _process(elapsed: float) -> void:
 			_place_backdrop()
 
 	if creditsActive:
-		var next_top := creditsText.offset_top - creditsScrollSpeed * elapsed
+		var next_top := creditsText.offset_top - creditsScrollSpeed * creditsPanel.size.y * elapsed
 		if next_top + _credits_height < 0.0:
 			next_top = creditsPanel.size.y
 		_place_credits(next_top)
 
 	if _leaving:
-		var dx: float = 450.0 * elapsed
+		var dx: float = get_viewport().get_visible_rect().size.x * 0.39 * elapsed
 		titleLogo.position.x -= dx
 		if buttons_root != null:
 			buttons_root.position.x -= dx
@@ -160,7 +146,7 @@ func _process(elapsed: float) -> void:
 		var logo_right: float = titleLogo.position.x + logo_w
 		var buttons_right := 0.0
 		if buttons_root != null:
-			buttons_right = buttons_root.position.x + 135.0 * buttons_root.scale.x
+			buttons_right = buttons_root.position.x + playButton.position.x + playButton.size.x
 		if buttons_right < 0.0 and logo_right < 0.0:
 			_leaving = false
 			get_tree().change_scene_to_packed(play_scene)
@@ -194,11 +180,11 @@ func optionsMenu() -> void:
 	_show_menu(false)
 	if ui_layer != null:
 		ui_layer.visible = false
-	options.show()
+	options.visible = true
 
 
 func show_main_menu() -> void:
-	options.hide()
+	options.visible = false
 	if ui_layer != null:
 		ui_layer.visible = true
 	_show_menu(true)

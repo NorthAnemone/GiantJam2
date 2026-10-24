@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dmmwm7d5pwaa4"]
 
 [ext_resource type="Script" uid="uid://bj8a7fq6g221v" path="res://scripts/menu.gd" id="1_menu"]
-[ext_resource type="AudioStream" uid="uid://c64k0h5rxckug" path="res://assets/music/menuMusic.wav" id="4_music"]
+[ext_resource type="Texture2D" uid="uid://cmj8cmrjcvu3c" path="res://assets/icons/FromBelowLogo.png" id="2_mhnvy"]
+[ext_resource type="AudioStream" uid="uid://boirof42sylhg" path="res://assets/music/AlienPirate.mp3" id="3_mhnvy"]
 [ext_resource type="PackedScene" uid="uid://fnu004kbliyq" path="res://scenes/options.tscn" id="5_options"]
 
 [node name="Menu" type="Node2D" unique_id=1703769367]
@@ -30,40 +31,58 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="FromBelowLogo" type="Sprite2D" parent="UILayer/UI" unique_id=1797650876]
+position = Vector2(285, 190.00002)
+scale = Vector2(0.10968742, 0.10968749)
+texture = ExtResource("2_mhnvy")
+
 [node name="Buttons" type="Control" parent="UILayer/UI" unique_id=1900000100]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="PlayButton" type="Button" parent="UILayer/UI/Buttons" unique_id=1953328181]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 212.0
-offset_right = 135.0
-offset_bottom = 234.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0390625
+anchor_top = 0.5888889
+anchor_right = 0.2109375
+anchor_bottom = 0.65
+theme_override_font_sizes/font_size = 29
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="UILayer/UI/Buttons" unique_id=1613240636]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 244.0
-offset_right = 135.0
-offset_bottom = 266.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0390625
+anchor_top = 0.6777778
+anchor_right = 0.2109375
+anchor_bottom = 0.7388889
+theme_override_font_sizes/font_size = 29
 text = "Options"
 
 [node name="CreditsButton" type="Button" parent="UILayer/UI/Buttons" unique_id=586732612]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 276.0
-offset_right = 135.0
-offset_bottom = 298.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0390625
+anchor_top = 0.7666667
+anchor_right = 0.2109375
+anchor_bottom = 0.8277778
+theme_override_font_sizes/font_size = 29
 text = "Credits"
 
 [node name="CloseButton" type="Button" parent="UILayer/UI/Buttons" unique_id=1263325333]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 308.0
-offset_right = 135.0
-offset_bottom = 330.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0390625
+anchor_top = 0.8555556
+anchor_right = 0.2109375
+anchor_bottom = 0.9166667
+theme_override_font_sizes/font_size = 29
 text = "Close"
 
 [node name="CreditsPanel" type="ColorRect" parent="UILayer/UI" unique_id=1788132304]
@@ -91,18 +110,18 @@ mouse_filter = 2
 [node name="CreditsText" type="Label" parent="UILayer/UI/CreditsPanel/CreditsClip" unique_id=604325472]
 visible = false
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 3210.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 autowrap_mode = 3
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1157577543]
-stream = ExtResource("4_music")
+stream = ExtResource("3_mhnvy")
 autoplay = true
-bus = &"Music"
 
 [node name="Options" parent="." unique_id=1584851696 instance=ExtResource("5_options")]
 visible = false

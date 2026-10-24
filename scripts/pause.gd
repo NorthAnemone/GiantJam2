@@ -8,10 +8,6 @@ var _armed: bool = false
 
 func _ready() -> void:
 	isPaused = true
-	Menu.fit_control($UI)
-	get_viewport().size_changed.connect(func() -> void:
-		Menu.fit_control($UI)
-	)
 
 
 func _exit_tree() -> void:

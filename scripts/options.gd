@@ -1,5 +1,5 @@
 class_name Options
-extends Node2D
+extends CanvasLayer
 
 @onready var shipButton: Button = $Panel/ShipButton
 @onready var musicSlider: HSlider = $Panel/MusicSlider
@@ -16,13 +16,6 @@ var currentShipNumber: int = 0
 
 
 func _ready() -> void:
-	var ui := $Panel as Control
-	if ui != null:
-		ui.size = Menu.DESIGN_SIZE
-		Menu.fit_control(ui)
-		get_viewport().size_changed.connect(func() -> void:
-			Menu.fit_control(ui)
-		)
 	if musicSlider != null:
 		setMusicVolume(musicSlider.value)
 	if sfxSlider != null:
