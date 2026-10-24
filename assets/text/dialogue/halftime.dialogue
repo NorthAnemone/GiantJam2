@@ -3,4 +3,5 @@ if GameManager.score <= GameManager.quota/2:
 	BOSS: YOUR PERFORMING BELOW EXPECATIONS *BURP* this will be going on your quarterly.
 else:
 	BOSS: Your perfomance can be reasonably described as adequte by those that like you.
+Boss: {{GameManager.quota - GameManager.score}} left. get on with it.
 => END

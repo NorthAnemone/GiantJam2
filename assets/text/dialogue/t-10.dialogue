@@ -1,6 +1,6 @@
 ~ start
 if GameManager.score <= GameManager.quota/2:
-	Boss: YOU ONLY HAVE [GameManager.score]!?!?!?
+	Boss: YOU ONLY HAVE {{GameManager.score}}!?!?!?
 	Boss: I would start calling family.
 elif GameManager.score <= GameManager.quota*0.9:
 	Boss: Get a move on.
