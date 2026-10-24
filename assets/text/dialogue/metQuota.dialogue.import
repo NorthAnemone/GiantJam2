@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bfh3puj7agryi"
+path="res://.godot/imported/metQuota.dialogue-8ef07c15960705e7c1764bcaf07621e0.tres"
+
+[deps]
+
+source_file="res://assets/text/dialogue/metQuota.dialogue"
+dest_files=["res://.godot/imported/metQuota.dialogue-8ef07c15960705e7c1764bcaf07621e0.tres"]
+
+[params]
+
+defaults=true
