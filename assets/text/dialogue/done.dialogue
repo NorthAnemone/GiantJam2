@@ -9,5 +9,7 @@ if GameManager.score < GameManager.quota:
 	Boss: *glass breaking* I should've known better than to take a chance on a no-good wrangler.
 	Boss: Meet me in my office.
 else:
-	Boss: 
+	Boss: Call my office to get your paycheck issues.
+	Telephone: *clang*
+	Telephone: *eeeeeeeeeeeeeeeeeeeee*
 => END
