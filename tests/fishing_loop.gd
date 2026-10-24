@@ -12,6 +12,7 @@ func check(condition: bool, message: String) -> void:
 
 func run() -> void:
 	var manager := root.get_node("GameManager")
+	check(manager.dayLength == 60.0 and manager.quota == 3.0, "Day lasts sixty seconds with three quota wins")
 	manager.score = 0
 	manager.dayKillCount = 0
 	manager.totalKillCount = 0
@@ -22,7 +23,7 @@ func run() -> void:
 	# Dialogue presentation is covered by the game; keep these loop checks deterministic.
 	quota_hud.events.clear()
 	check(quota_hud is CanvasLayer and quota_hud.layer == 6, "Quota is fixed on screen above minigame HUD")
-	check(quota_hud.label.text == "QUOTA WINS: 0 / 6", "Quota starts at zero of six")
+	check(quota_hud.label.text == "QUOTA WINS: 0 / 3", "Quota starts at zero of three")
 	var fishing := (load("res://scenes/exploration.tscn") as PackedScene).instantiate()
 	root.add_child(fishing)
 	current_scene = fishing
@@ -56,8 +57,8 @@ func run() -> void:
 		check(not is_instance_valid(round_node) and not is_instance_valid(ship_root), "Finished round and whole ship are removed")
 		check(current_scene == fishing and fishing.can_process() and not manager.isMinigame, "Fishing resumes after encounter %d" % win)
 		check(root.get_viewport().get_camera_2d() == camera, "Fishing camera is restored")
-		check(manager.score == mini(win, 6), "Quota increases once and caps at six")
-		check(quota_hud.label.text == "QUOTA WINS: %d / 6" % mini(win, 6), "Quota is updated immediately")
+		check(manager.score == mini(win, 3), "Quota increases once and caps at three")
+		check(quota_hud.label.text == "QUOTA WINS: %d / 3" % mini(win, 3), "Quota is updated immediately")
 		check(quota_hud.label.is_visible_in_tree(), "Quota remains visible in fishing")
 	check(manager.totalKillCount == 7 and manager.dayKillCount == 7, "Ships sunk still track all wins")
 	check(manager.dayTimer == 25.0, "Round transitions preserve the day timer")
@@ -65,6 +66,6 @@ func run() -> void:
 	quota_hud.nextEvent = 3
 	manager.score = 0
 	quota_hud.start()
-	check(quota_hud.nextEvent == 0 and quota_hud.label.text == "QUOTA WINS: 0 / 6", "New run resets the quota HUD")
+	check(quota_hud.nextEvent == 0 and quota_hud.label.text == "QUOTA WINS: 0 / 3", "New run resets the quota HUD")
 	print("Fishing loop: %d failure(s)" % failures)
 	quit(failures)
