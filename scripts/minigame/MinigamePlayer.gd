@@ -1,13 +1,14 @@
 extends Area2D
 
-signal health_changed(health: int)
+signal hit
 
 const speed = 200
-const max_health = 10
-var health = max_health
+var active: bool = true
 var invulnerability_time = 0.0
 
 func _process(delta: float) -> void:
+	if not active:
+		return
 	invulnerability_time = maxf(0.0, invulnerability_time - delta)
 	modulate = Color(1, 0.3, 0.3) if invulnerability_time > 0.0 else Color.WHITE
 	var movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -16,13 +17,10 @@ func _process(delta: float) -> void:
 	position = position.clamp(bounds.position, bounds.end)
 
 func _on_area_entered(area: Area2D) -> void:
-	if not area.is_in_group("bullets") or health <= 0:
+	if not area.is_in_group("bullets") or not active:
 		return
 	area.queue_free()
 	if invulnerability_time > 0.0:
 		return
-	health = maxi(health - 1, 0)
 	invulnerability_time = 0.5
-	health_changed.emit(health)
-	if health == 0:
-		get_tree().paused = true
+	hit.emit()
