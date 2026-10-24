@@ -55,7 +55,7 @@ func check_events() -> void:
 	while nextEvent < events.size():
 		var event: QoutaEvent = events[nextEvent]
 
-		if event.trigger_score >= GameManager.score:
+		if event.trigger_score > GameManager.score:
 			break
 
 		event.handler.call()
