@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c527t77u0fooy" path="res://scenes/Balloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Texture2D" uid="uid://dg6wxsyjep2rc" path="res://assets/sprites/ShipBoss.png" id="2_yknal"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
@@ -126,6 +127,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
+
+[node name="ShipBoss" type="Sprite2D" parent="Balloon" unique_id=335505554]
+position = Vector2(274.00006, 278)
+rotation = -0.2617994
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_yknal")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=1302081376]
 layout_mode = 1

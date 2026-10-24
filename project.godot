@@ -13,8 +13,7 @@ config_version=5
 config/name="Pira2ite"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
-boot_splash/stretch_mode=4
-boot_splash/image="res://assets/icons/groupone/GroupOneSplash.png"
+boot_splash/image="uid://brveli4d50xsg"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1200
 
@@ -75,7 +74,7 @@ move_down={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/text/dialogue/boss.dialogue")
+locale/translations_pot_files=PackedStringArray("res://assets/text/dialogue/boss.dialogue", "res://assets/text/dialogue/done.dialogue", "res://assets/text/dialogue/halftime.dialogue", "res://assets/text/dialogue/intro.dialogue", "res://assets/text/dialogue/t-10.dialogue")
 
 [physics]
 
