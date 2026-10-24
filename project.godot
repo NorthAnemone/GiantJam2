@@ -20,9 +20,9 @@ boot_splash/minimum_display_time=1200
 
 [autoload]
 
-Flx="*res://scripts/flx.gd"
 DialogueManager="*uid://c3rodes2l3gxb"
 GameManager="*uid://bpslyisjiqn2q"
+Flx="*res://scripts/flx.gd"
 
 [display]
 
