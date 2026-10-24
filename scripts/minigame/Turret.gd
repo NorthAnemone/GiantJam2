@@ -1,6 +1,6 @@
 extends Area2D
 
-var bullet_scene = preload("res://bullet.tscn")
+var bullet_scene = preload("res://scenes/minigame/bullet.tscn")
 var timer = 0.0
 var fire_rate = 1.2
 var edge = 0
