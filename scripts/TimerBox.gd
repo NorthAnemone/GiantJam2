@@ -20,7 +20,7 @@ func _ready() -> void:
 		)
 	]
 	
-	label.text = "%.2f/%.2f" % [GameManager.dayTimer, GameManager.dayLength]
+	update_label()
 	
 	start()
 
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		return
 
 	GameManager.dayTimer += delta
-	label.text = "%.2f/%.2f" % [GameManager.dayTimer, GameManager.dayLength]
+	update_label()
 	check_events()
 
 	if GameManager.dayTimer >= GameManager.dayLength:
@@ -56,6 +56,8 @@ func reset() -> void:
 	nextEvent = 0
 	running = false
 
+func update_label() -> void:
+	label.text = "%.0f/%.0f" % [GameManager.dayTimer, GameManager.dayLength]
 
 ## Checks whether the next event should happen.
 func check_events() -> void:
