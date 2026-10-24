@@ -11,6 +11,7 @@ var totalKillCount: int = 0
 var deathCount: int = 0
 var minigameTimer: float = 0
 var dayTimer: float = 0
+var isMinigame: bool = false
 
 # enums
 enum MOVE_STATE {PLAYER, LURE}

@@ -35,3 +35,11 @@ func _on_health_changed(health: int) -> void:
 	$HUD/HealthLabel.text = "HP %d / %d" % [health, $Player.max_health]
 	if health == 0:
 		$HUD/HealthLabel.text = "HP 0 / %d - Game over" % $Player.max_health
+
+func _on_minigame_end() -> void:
+	# 1. Unpause the game tree so the main scene resumes running
+	get_tree().paused = false
+	
+	# 2. Delete this temporary sub-scene
+	queue_free()
+	GameManager.isMinigame = false
