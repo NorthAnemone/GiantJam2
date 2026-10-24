@@ -1,12 +1,13 @@
 extends Area2D
 
-var speed = 400
-var direction = Vector2(-1,1)
-var screen_rect
+var speed = 220.0
+var direction = Vector2.DOWN
+var lifetime = 0.0
 
-func _ready():
-	screen_rect = get_viewport().get_visible_rect()
 func _process(delta: float) -> void:
 	position += direction * speed * delta
-	if not screen_rect.has_point(global_position):
+	lifetime += delta
+	# Keep new bullets alive outside the edge until they enter the screen.
+	# Read the current viewport so resizing does not use stale bounds.
+	if not get_viewport_rect().grow(32.0).has_point(position) or lifetime > 15.0:
 		queue_free()

@@ -10,15 +10,9 @@ radius = 9.485046
 script = ExtResource("1_v8qja")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=480373951]
-position = Vector2(596, 347)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_t4vbm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1224463364]
 scale = Vector2(0.83, 0.83)
 shape = SubResource("CircleShape2D_v8qja")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2135757056]
-top_level = true
-position = Vector2(594, 345)
-show_rect = false

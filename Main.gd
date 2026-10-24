@@ -1,27 +1,23 @@
 extends Node2D
+
 var turret_scene = preload("res://turret.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var turret = turret_scene.instantiate()
-	add_child(turret)
-	turret.position = Vector2(100,100)
-	turret.fire_rate = 1
-	turret.bullets_to_fire * 10
+	$Player.position = get_viewport_rect().get_center()
+	$HUD/HealthBar.max_value = $Player.max_health
+	$Player.health_changed.connect(_on_health_changed)
+	_on_health_changed($Player.health)
+	# One turret for each edge: top, right, bottom, left.
+	for edge in range(4):
+		var turret = turret_scene.instantiate()
+		turret.edge = edge
+		turret.target = $Player
+		turret.fire_rate = 1.2
+		turret.timer = edge * 0.3
+		add_child(turret)
 
-	turret = turret_scene.instantiate()
-	add_child(turret)
-	turret.position = Vector2(200,200)
-	turret.fire_rate = 0.8
-	turret.bullets_to_fire * 5
-
-	turret = turret_scene.instantiate()
-	add_child(turret)
-	turret.position = Vector2(150,150)
-	turret.fire_rate = 5
-	turret.bullets_to_fire * 20
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_health_changed(health: int) -> void:
+	$HUD/HealthBar.value = health
+	$HUD/HealthLabel.text = "HP %d / %d" % [health, $Player.max_health]
+	if health == 0:
+		$HUD/HealthLabel.text = "HP 0 / %d - Game over" % $Player.max_health
