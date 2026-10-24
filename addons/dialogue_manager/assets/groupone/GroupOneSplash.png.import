@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brveli4d50xsg"
-path="res://.godot/imported/GroupOneSplash.png-a3386b50dd268aa3eea8be7ebff6585b.ctex"
+path="res://.godot/imported/GroupOneSplash.png-92d91afc310c2aee75fbb3972595a26e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/groupone/GroupOneSplash.png"
-dest_files=["res://.godot/imported/GroupOneSplash.png-a3386b50dd268aa3eea8be7ebff6585b.ctex"]
+source_file="res://addons/dialogue_manager/assets/groupone/GroupOneSplash.png"
+dest_files=["res://.godot/imported/GroupOneSplash.png-92d91afc310c2aee75fbb3972595a26e.ctex"]
 
 [params]
 

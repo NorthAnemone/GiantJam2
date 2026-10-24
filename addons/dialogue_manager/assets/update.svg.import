@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:addons/dialogue_manager/assets/groupone/GroupOneLogo.png.import
-uid="uid://b556wxjlkrjvn"
-path="res://.godot/imported/GroupOneLogo.png-139f471e454ce98fb6918bde96e58ef5.ctex"
-========
-uid="uid://d3baj6rygkb3f"
+uid="uid://6x7kujch0x34"
 path="res://.godot/imported/update.svg-f1628866ed4eb2e13e3b81f75443687e.ctex"
->>>>>>>> bossman:addons/dialogue_manager/assets/update.svg.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:addons/dialogue_manager/assets/groupone/GroupOneLogo.png.import
-source_file="res://assets/icons/groupone/GroupOneLogo.png"
-dest_files=["res://.godot/imported/GroupOneLogo.png-139f471e454ce98fb6918bde96e58ef5.ctex"]
-========
 source_file="res://addons/dialogue_manager/assets/update.svg"
 dest_files=["res://.godot/imported/update.svg-f1628866ed4eb2e13e3b81f75443687e.ctex"]
->>>>>>>> bossman:addons/dialogue_manager/assets/update.svg.import
 
 [params]
 
