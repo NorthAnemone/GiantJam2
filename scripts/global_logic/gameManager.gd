@@ -56,6 +56,15 @@ func begin_play() -> void:
 			quota_display.start()
 
 
+## One successful encounter earns one quota win, capped at the target.
+func record_minigame_win() -> void:
+	score = minf(score + 1.0, quota)
+	dayKillCount += 1
+	totalKillCount += 1
+	if is_instance_valid(quota_display):
+		quota_display.update_label()
+
+
 ## Hides the day timer when leaving back to the menu.
 func end_play() -> void:
 	if timer == null:
