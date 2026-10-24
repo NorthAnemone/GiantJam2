@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bbw8cltydlvwi"]
+
+[ext_resource type="Script" uid="uid://drg1jbypexjhr" path="res://playerMove.gd" id="1_rflj0"]
+[ext_resource type="Texture2D" uid="uid://c4tfojedq5yhf" path="res://icon.svg" id="2_45obx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngi1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tut6i"]
+size = Vector2(107, 104)
+
+[node name="KegoPlayer" type="CharacterBody2D" unique_id=1165883635]
+script = ExtResource("1_rflj0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=170405815]
+sprite_frames = SubResource("SpriteFrames_ngi1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851745391]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_tut6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1170882523]
+texture = ExtResource("2_45obx")
