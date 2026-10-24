@@ -19,7 +19,7 @@ func _ready() -> void:
 		TimerEvent.new("test", 0, DialogueScript.run.bind("res://assets/text/dialogue/intro.dialogue")),
 		TimerEvent.new("test", (GameManager.dayLength/2), DialogueScript.run.bind("res://assets/text/dialogue/halftime.dialogue")),
 		TimerEvent.new("test", (GameManager.dayLength-10), DialogueScript.run.bind("res://assets/text/dialogue/t-10.dialogue")),
-		TimerEvent.new("test", (GameManager.dayLength-1), DialogueScript.run.bind("res://assets/text/dialogue/DONE.dialogue"))
+		TimerEvent.new("test", (GameManager.dayLength-1), DialogueScript.run.bind("res://assets/text/dialogue/done.dialogue"))
 	]
 	
 	update_label()

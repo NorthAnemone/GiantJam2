@@ -1,4 +1,3 @@
-class_name Options
 extends CanvasLayer
 
 @onready var shipButton: Button = $Panel/ShipButton

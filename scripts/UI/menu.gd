@@ -1,4 +1,3 @@
-class_name Menu
 extends Node2D
 
 @export var play_scene: PackedScene

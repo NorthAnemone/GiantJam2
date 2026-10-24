@@ -1,4 +1,3 @@
-class_name Pause
 extends CanvasLayer
 
 static var isPaused: bool = false
