@@ -36,4 +36,5 @@ func onRestart() -> void:
 func onExit() -> void:
 	isPaused = false
 	get_tree().paused = false
+	GameManager.end_play()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

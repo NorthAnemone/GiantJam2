@@ -1,5 +1,5 @@
 class_name TimerBox
-extends Node2D
+extends CanvasLayer
 
 ## Emitted when the timer reaches its limit.
 signal finished
@@ -59,7 +59,7 @@ func reset() -> void:
 	running = false
 
 func update_label() -> void:
-	label.text = "%.0f/%.0f" % [GameManager.dayTimer, GameManager.dayLength]
+	label.text = "%.0f" % [GameManager.dayLength - GameManager.dayTimer]
 
 ## Checks whether the next event should happen.
 func check_events() -> void:

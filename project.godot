@@ -26,7 +26,6 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 DialogueManager="*uid://c3rodes2l3gxb"
 GameManager="*uid://bpslyisjiqn2q"
-Flx="*res://scripts/flx.gd"
 
 [dialogue_manager]
 

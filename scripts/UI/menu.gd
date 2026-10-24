@@ -147,6 +147,7 @@ func _process(elapsed: float) -> void:
 			buttons_right = buttons_root.position.x + playButton.position.x + playButton.size.x
 		if buttons_right < 0.0 and logo_right < 0.0:
 			_leaving = false
+			GameManager.begin_play()
 			get_tree().change_scene_to_packed(play_scene)
 
 
