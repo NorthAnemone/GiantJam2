@@ -1,6 +1,6 @@
 extends Node
 
-const dayLength: float = 60
+const dayLength: float = 70
 
 var quota: float = 3
 var score: float = 0
