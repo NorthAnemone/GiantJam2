@@ -112,11 +112,13 @@ _data = {
 }
 
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=38036521]
+process_mode = 3
 layer = 100
 script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="." unique_id=154399927]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -181,6 +183,7 @@ libraries/ = SubResource("AnimationLibrary_1337t")
 autoplay = &"progress"
 
 [node name="CenterContainer" type="CenterContainer" parent="Balloon" unique_id=1087901387]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
