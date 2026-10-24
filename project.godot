@@ -24,6 +24,10 @@ DialogueManager="*uid://c3rodes2l3gxb"
 GameManager="*uid://bpslyisjiqn2q"
 Flx="*res://scripts/flx.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://scenes/Balloon/balloon.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
