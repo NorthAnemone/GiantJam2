@@ -69,6 +69,17 @@ func begin_next_day() -> void:
 	begin_play()
 
 
+## Difficulty follows elapsed day time, so new encounters do not reset it.
+func get_day_progress() -> float:
+	return clampf(dayTimer / dayLength, 0.0, 1.0)
+
+func get_difficulty_multiplier() -> float:
+	return lerpf(0.5, 2.0, get_day_progress())
+
+func get_hook_speed_multiplier() -> float:
+	return lerpf(0.8, 1.25, get_day_progress())
+
+
 ## One successful encounter earns one quota win, capped at the target.
 func record_minigame_win() -> void:
 	if run_ended:
