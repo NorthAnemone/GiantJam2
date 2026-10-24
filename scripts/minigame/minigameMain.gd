@@ -73,10 +73,10 @@ func _show_game_over() -> void:
 
 func _finish_win() -> void:
 	# This is the only reward path; third-hit losses never award a ship.
-	GameManager.score += 1
-	GameManager.dayKillCount += 1
-	GameManager.totalKillCount += 1
-	if is_instance_valid(source_ship):
+	GameManager.record_minigame_win()
+	if is_instance_valid(_exploration) and _exploration.has_method("on_ship_sunk"):
+		_exploration.on_ship_sunk(source_ship)
+	elif is_instance_valid(source_ship):
 		source_ship.queue_free()
 	if _exploration == self:
 		# Support running the minigame scene directly in the editor.
