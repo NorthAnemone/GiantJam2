@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cyavxne71mlpa" path="res://scripts/minigame/Turret.gd" id="1_tjdg3"]
 
 [node name="Turret" type="Area2D" unique_id=1436256701]
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("1_tjdg3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1280606334]

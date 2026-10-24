@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://bugtdjb4w2enh"]
 
 [ext_resource type="Script" uid="uid://dohxvv57mk7mg" path="res://scripts/mobs/enemyBase.gd" id="1_3gvst"]
+[ext_resource type="Texture2D" uid="uid://bqtc230ddhlxh" path="res://assets/minigame/Hook.png" id="2_55jtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gvst"]
 size = Vector2(8, 14)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_55jtl"]
-load_path = "res://.godot/imported/icon.svg-7c8e6dfe2213e2029f33175ecfc9166b.ctex"
 
 [node name="Enemy" type="Node" unique_id=625473931]
 
@@ -15,12 +13,18 @@ collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_3gvst")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody" unique_id=891379471]
-position = Vector2(-3.8146973e-06, -14.5)
+[node name="Area2D" type="Area2D" parent="EnemyBody" unique_id=1232603535]
+position = Vector2(0, -22)
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody/Area2D" unique_id=891379471]
+position = Vector2(0, -0.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_3gvst")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="EnemyBody" unique_id=749675076]
-position = Vector2(-1.9073486e-06, -14.5)
-scale = Vector2(0.031249989, 0.0546875)
-texture = SubResource("CompressedTexture2D_55jtl")
+position = Vector2(-7.1525574e-07, -22.5)
+scale = Vector2(0.026315799, 0.02536232)
+texture = ExtResource("2_55jtl")
+
+[connection signal="body_entered" from="EnemyBody/Area2D" to="EnemyBody" method="_on_area_2d_body_entered"]
